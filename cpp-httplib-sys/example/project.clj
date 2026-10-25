@@ -4,8 +4,9 @@
   :dependencies [[org.jank-lang.commons/cpp-httplib-sys "2026.10-1"]]
   :plugins [[org.jank-lang/lein-jank "2026.10-1"]]
   :middleware [leiningen.jank/middleware]
-  :main cpp-httplib-sys.example
   :profiles {:base {:jank {:target-dir "target/debug"
                            :optimization-level 0}}
              :release {:jank {:target-dir "target/release"
-                              :optimization-level 3}}})
+                              :optimization-level 3}}
+             :client {:main cpp-httplib-sys.example-client}
+             :server {:main cpp-httplib-sys.example-server}})

@@ -1,4 +1,4 @@
-(ns cpp-httplib-sys.example
+(ns cpp-httplib-sys.example-client
   (:require [clojure.data.json :as json])
   (:include "httplib.h"))
 

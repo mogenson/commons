@@ -1,0 +1,15 @@
+(ns cpp-httplib-sys.example-server
+  (:include "httplib.h"))
+
+(defn handle-home [_req ^(:* httplib.Response) res]
+  ;; Call C++ method set_content(body, content_type) on the response object
+  (.set_content res "<h1>Hello from a jank Web Server!</h1>" "text/html"))
+
+(defn -main [& _args]
+  (println "Starting jank web server on http://localhost:8080 ...")
+  ;; Instantiate the C++ httplib::Server object
+  (let [srv (cpp/httplib.Server)]
+    ;; Register HTTP GET endpoint.
+    (.Get srv "/" handle-home)
+    ;; Listen on port 8080
+    (.listen srv "0.0.0.0" 8080)))
